@@ -26,9 +26,9 @@ function getRMPId(prof) {
 
   request({ url: RATEMYPROFESSOR_SEARCH_URL, qs: query_params }, function(err, response, body) {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else if (response.statusCode !== 200) {
-      console.log('Status code : ' + response.statusCode + ' while processing ' + prof.name + '\nAborting');
+      console.error('Status code : ' + response.statusCode + ' while processing ' + prof.name + '\nAborting');
     }
 
     try {
@@ -49,9 +49,9 @@ function getRating(prof) {
 
   request({ url: RATEMYPROFESSOR_PROF_URL + prof.rmp_id}, function(err, response, body) {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else if (response.statusCode !== 200) {
-      console.log('Status code : ' + response.statusCode + '\nAborting');
+      console.error('Status code : ' + response.statusCode + '\nAborting');
     } else {
       grade = cheerio.load(body)('div.grade')[0].children[0].data;
       return;
@@ -80,8 +80,10 @@ function main() {
   var profs = getList();
 
   async.each(profs, processProf, function(err) {
-    console.log(err);
+    console.error(err);
   });
+
+  return 0;
 }
 
 module.exports = { main: main }
