@@ -2,3 +2,8 @@ language: node_js
 node_js:
   - stable
 before_deploy: zip -r deploy.zip .
+deploy:
+  - provider: lambda
+    function_name: RateMyProfessorWorker
+    handler_name: main
+    zip: ./deploy.zip
