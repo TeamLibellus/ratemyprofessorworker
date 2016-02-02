@@ -28,14 +28,14 @@ function getRMPId(prof) {
     if (err) {
       console.log(err);
     } else if (response.statusCode !== 200) {
-      console.log("Status code : " + response.statusCode + ` while processing ${prof.name}\nAborting`);
+      console.log('Status code : ' + response.statusCode + ' while processing ' + prof.name + '\nAborting');
     }
 
     try {
       id = /\d+$/.exec(cheerio.load(body)('li.listing.PROFESSOR > a:first-child')[0].attribs.href)[0];
       return;
     } catch (e) {
-      console.log(`No professor with name : ${prof.name}`);
+      console.log('No professor with name : ' + prof.name);
     }
     id = -1;
   });
@@ -51,7 +51,7 @@ function getRating(prof) {
     if (err) {
       console.log(err);
     } else if (response.statusCode !== 200) {
-      console.log("Status code : " + response.statusCode + "\nAborting");
+      console.log('Status code : ' + response.statusCode + '\nAborting');
     } else {
       grade = cheerio.load(body)('div.grade')[0].children[0].data;
       return;
@@ -65,7 +65,7 @@ function getRating(prof) {
 }
 
 function updateProf(prof) {
-  console.log(`Connect to DB and update ${prof.name} (${prof.rating})`);
+  console.log('Connect to DB and update ' + prof.name + ' (' + prof.rating + ')');
 }
 
 function processProf(prof) {
