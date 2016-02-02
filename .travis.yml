@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - stable
-before_deploy: zip -r deploy.zip .
+before_deploy: zip -r deploy.zip . -x *.git*
 deploy:
   - provider: lambda
     access_key_id: ${AWS_ACCESS_KEY}
