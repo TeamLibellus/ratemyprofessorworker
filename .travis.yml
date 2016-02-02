@@ -4,6 +4,8 @@ node_js:
 before_deploy: zip -r deploy.zip .
 deploy:
   - provider: lambda
+    access_key_id: ${AWS_ACCESS_KEY}
+    secret_access_key: ${AWS_SECRET_KEY}
     function_name: RateMyProfessorWorker
     handler_name: main
     zip: ./deploy.zip
