@@ -76,14 +76,14 @@ function processProf(prof) {
     updateProf(prof);
 }
 
-function main() {
+function main(event, context) {
   var profs = getList();
 
   async.each(profs, processProf, function(err) {
     console.error(err);
   });
 
-  return 0;
+  context.succeed("Done.");
 }
 
 module.exports = { main: main }
