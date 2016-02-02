@@ -1,5 +1,7 @@
 deployment:
-  master:
-    branch: master
-    commands:
-      - zip -r deploy.zip .
+  pre:
+    master:
+      branch: master
+      commands:
+        - zip -r deploy.zip .
+        - mv deploy.zip $CIRCLE_ARTIFACTS
