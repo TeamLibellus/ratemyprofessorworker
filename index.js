@@ -1,4 +1,3 @@
-'use strict';
 const RATEMYPROFESSOR_SEARCH_URL = 'http://www.ratemyprofessors.com/search.jsp';
 const RATEMYPROFESSOR_PROF_URL = 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=';
 
