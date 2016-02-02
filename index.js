@@ -1,10 +1,10 @@
-const RATEMYPROFESSOR_SEARCH_URL = 'http://www.ratemyprofessors.com/search.jsp';
-const RATEMYPROFESSOR_PROF_URL = 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=';
+var RATEMYPROFESSOR_SEARCH_URL = 'http://www.ratemyprofessors.com/search.jsp';
+var RATEMYPROFESSOR_PROF_URL = 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=';
 
-let request = require('request');
-let cheerio = require('cheerio');
-let deasync = require('deasync');
-let async = require('async');
+var request = require('request');
+var cheerio = require('cheerio');
+var deasync = require('deasync');
+var async = require('async');
 
 function getList() {
   return [
@@ -16,7 +16,7 @@ function getList() {
 }
 
 function getRMPId(prof) {
-  let query_params = {
+  var query_params = {
     queryoption: 'HEADER',
     queryBy: 'teacherName',
     schoolName: 'California State University Long Beach',
@@ -45,7 +45,7 @@ function getRMPId(prof) {
 }
 
 function getRating(prof) {
-  let grade;
+  var grade;
 
   request({ url: RATEMYPROFESSOR_PROF_URL + prof.rmp_id}, function(err, response, body) {
     if (err) {
@@ -77,7 +77,7 @@ function processProf(prof) {
 }
 
 (function() {
-  let profs = getList();
+  var profs = getList();
 
   async.each(profs, processProf, function(err) {
     console.log(err);
