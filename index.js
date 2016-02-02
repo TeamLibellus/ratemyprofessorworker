@@ -40,7 +40,7 @@ function getRMPId(prof) {
     id = -1;
   });
 
-  deasync.loopWhile(() => !id);
+  deasync.loopWhile(function() { return !id });
   return id;
 }
 
@@ -60,7 +60,7 @@ function getRating(prof) {
     grade = -1;
   });
 
-  deasync.loopWhile(() => !grade);
+  deasync.loopWhile(function() { return !grade });
   return grade;
 }
 
